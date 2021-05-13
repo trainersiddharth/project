@@ -3,9 +3,7 @@
 
 class Admin_Controller extends CI_controller{
 
-	   public function nsti_students(){
-		   
-	   }
+	
 	
 		public function index(){
 
