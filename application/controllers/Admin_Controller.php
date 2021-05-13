@@ -2,10 +2,7 @@
 <?php
 
 class Admin_Controller extends CI_controller{
-
-
-
-		
+	
 		public function index(){
 
 		$this->load->model('Admin_Model');
