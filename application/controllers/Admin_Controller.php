@@ -4,9 +4,7 @@
 class Admin_Controller extends CI_controller{
 
 
-	public function sample(){
 
-	}
 		
 		public function index(){
 
