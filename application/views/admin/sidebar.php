@@ -41,15 +41,7 @@
             <i class="nav-icon fas fa-chart-line"></i>
               <p>Upload Student Detail</p>
             </a>
-          </li>  
-            
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-              <p>Add Students Detail </p>
-            </a>
-          </li>
-            
+          </li>    
                                                              
         </ul>
       </nav>
