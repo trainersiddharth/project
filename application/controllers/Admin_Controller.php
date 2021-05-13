@@ -54,6 +54,27 @@ class Admin_Controller extends CI_controller{
 	}
 
 
+	public function addStudent(){
+
+		$user=$this->session->userdata('user');
+
+		$data=array();
+		$data['user']=$user;
+
+		if(!empty($user)){
+
+			$this->load->view('admin/header',$data);
+			$this->load->view('admin/sidebar');
+			$this->load->view('admin/add-student');
+			$this->load->view('admin/footer');
+
+
+		}else{
+			echo "No Data is available...<br/>";
+		}	
+	}
+
+
 	public function addBatch(){
 
 		$user=$this->session->userdata('user');
@@ -115,6 +136,28 @@ class Admin_Controller extends CI_controller{
 
 		$this->session->set_flashdata('success','Batches Uploaded Successfully');
 		redirect(base_url('Admin_Controller/addBatch'));	
+	}
+
+
+	public function importStudent(){
+
+		$this->load->model('Admin_Model');
+		$this->load->library('csvimport');
+
+		$file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+		foreach($file_data as $row)
+		{
+			$data[] = array(
+				'name'	=>	$row["Centre Name"],
+        		'poc_name' =>	$row["POC"],
+        		'trainer_name' =>	$row["Trainer"],
+        		'email' => $row["Email"]
+			);
+		}
+		$this->Admin_Model->insertCentre($data);
+
+		$this->session->set_flashdata('success','Centes Uploaded Successfully');
+		redirect(base_url('Admin_Controller/addStudent'));	
 	}
 
 }
