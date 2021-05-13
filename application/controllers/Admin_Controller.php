@@ -148,7 +148,7 @@ class Admin_Controller extends CI_controller{
 		foreach($file_data as $row)
 		{
 			$data[] = array(
-				'name'	=>	$row["name"],
+				'student_name'	=>	$row["name"],
         		'email' =>	$row["email"],
 				'no_of_courses' =>	$row["no_of_courses"],
 				'duration_of_courses' =>	$row["duration_of_courses"],
