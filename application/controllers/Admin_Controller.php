@@ -3,7 +3,12 @@
 
 class Admin_Controller extends CI_controller{
 
-	public function index(){
+
+	public function sample(){
+
+	}
+		
+		public function index(){
 
 		$this->load->model('Admin_Model');
 		$user=$this->session->userdata('user');
