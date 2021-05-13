@@ -148,10 +148,12 @@ class Admin_Controller extends CI_controller{
 		foreach($file_data as $row)
 		{
 			$data[] = array(
-				'name'	=>	$row["Centre Name"],
-        		'poc_name' =>	$row["POC"],
-        		'trainer_name' =>	$row["Trainer"],
-        		'email' => $row["Email"]
+				'name'	=>	$row["name"],
+        		'email' =>	$row["email"],
+				'no_of_courses' =>	$row["no_of_courses"],
+				'duration_of_courses' =>	$row["duration_of_courses"],
+        		'centre_code' =>	$row["centre"],
+        		'batch_code' => $row["batch"]
 			);
 		}
 		$this->Admin_Model->insertStudent($data);
