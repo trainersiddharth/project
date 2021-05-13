@@ -13,12 +13,14 @@ class Admin_Controller extends CI_controller{
 		$centres=$this->Admin_Model->countCentre();
 		$trainer=$this->Admin_Model->countTrainer();
 		$batches=$this->Admin_Model->countBatch();
+		$students=$this->Admin_Model->countStudent();
 
 		$data=array();
 		$data['user']=$user;
 		$data['dashboard_centres']=$centres;
 		$data['dashboard_trainers']=$trainer;
 		$data['dashboard_batch']=$batches;
+		$data['dashboard_student']=$students;
 
 		if(!empty($user)){
 

@@ -23,6 +23,13 @@ class Admin_Model extends CI_model{
 		return $query->num_rows();
 	}
 
+	public function countStudent(){
+		$this->db->distinct();
+		$this->db->select('id');
+		$query=$this->db->get('students');
+		return $query->num_rows();
+	}
+
 	public function insertCentre($data){
 		$this->db->insert_batch('centres', $data);
 	}

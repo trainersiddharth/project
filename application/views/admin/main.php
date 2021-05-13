@@ -78,7 +78,11 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>2384</h3>
+                <h3>
+                  <?php
+                      echo $dashboard_student;
+                  ?>
+                </h3>
 
                 <p>Students</p>
               </div>
