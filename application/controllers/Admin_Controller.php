@@ -154,7 +154,7 @@ class Admin_Controller extends CI_controller{
         		'email' => $row["Email"]
 			);
 		}
-		$this->Admin_Model->insertCentre($data);
+		$this->Admin_Model->insertStudent($data);
 
 		$this->session->set_flashdata('success','Centes Uploaded Successfully');
 		redirect(base_url('Admin_Controller/addStudent'));	
