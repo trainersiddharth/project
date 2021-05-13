@@ -25,21 +25,21 @@
             <li class="nav-item">
             <a href="<?php echo base_url('Admin_Controller/addCentre')?>" class="nav-link">
             <i class="nav-icon fas fa-university"></i>
-              <p>Add Institution</p>
+              <p>Upload Institution</p>
             </a>
           </li>
             
            <li class="nav-item">
             <a href="<?php echo base_url('Admin_Controller/addBatch')?>" class="nav-link">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
-              <p>Institute Batch Detail </p>
+              <p>Upload Batch Detail </p>
             </a>
           </li>
             
            <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo base_url('Admin_Controller/addStudent')?>" class="nav-link">
             <i class="nav-icon fas fa-chart-line"></i>
-              <p>Add SkillsBuild Detail</p>
+              <p>Upload Student Detail</p>
             </a>
           </li>  
             
