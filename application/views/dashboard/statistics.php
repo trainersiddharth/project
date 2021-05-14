@@ -87,7 +87,7 @@
     </tbody>
 </table>
 
-<?php print_r($tbl_student); ?>
+<?php print_r($tbl_students); ?>
                       
                       </div></div>
                    
