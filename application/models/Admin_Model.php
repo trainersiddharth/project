@@ -24,9 +24,8 @@ class Admin_Model extends CI_model{
 	}
 
 	public function countStudent(){
-		$this->db->distinct();
 		$this->db->select('id');
-		$query=$this->db->get('students');
+		$query=$this->db->get_where('students',array('batch_code'=>countBatch()));
 		return $query->num_rows();
 	}
 
