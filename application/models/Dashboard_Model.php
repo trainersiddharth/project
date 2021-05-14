@@ -25,7 +25,7 @@
     
         public function countStudent(){
             $this->db->select('id');
-            $query=$this->db->get_where('students',array('batch_code'=>countBatch()));
+            $query=$this->db->get_where('students',array('batch_code'=>$this->countBatch()));
             return $query->num_rows();
         }
 
