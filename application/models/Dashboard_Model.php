@@ -31,7 +31,7 @@
 
         public function instituteBatchCount(){
             
-            $query=$this->db->query('select y.name as "Centre", sum(if(x.batch_code=1,1,0)) as "Batch-1" , sum(if(x.batch_code=2,1,0)) as "Batch-2" , sum(if(x.batch_code=3,1,0)) as "Batch-3" from students x join centres y on x.centre_code=y.id  group by x.centre_code,y.name');
+            $query=$this->db->query('select y.name as "Centre", sum(if(x.batch_code=1,1,0)) as "Batch-1" , sum(if(x.batch_code=2,1,0)) as "Batch-2" , sum(if(x.batch_code=3,1,0)) as "Batch-3" ,y.poc_name, y.trainer_name ,y.email from students x join centres y on x.centre_code=y.id  group by x.centre_code,y.name');
             return $query->result_array();
         }
 
