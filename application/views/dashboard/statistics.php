@@ -60,7 +60,7 @@
     <td><?php echo $student['Batch-1'];?></td>
     <td><?php echo $student['Batch-2'];?></td>
     <td><?php echo $student['Batch-3'];?></td>
-    <td><?php echo $student['poc_name'];?>/td>
+    <td><?php echo $student['poc_name'];?></td>
     <td><?php echo $student['trainer_name'];?></td>
     <td><?php echo $student['email'];?></td>  
   </tr>
