@@ -5,15 +5,26 @@ class Dashboard extends CI_controller{
 	public function index(){
 
 		$user=$this->session->userdata('user');
+		$this->load->model('Dashboard_Model');
+
+		$centres=$this->Dashboard_Model->countCentre();
+		$trainer=$this->Dashboard_Model->countTrainer();
+		$batches=$this->Dashboard_Model->countBatch();
+		$students=$this->Dashboard_Model->countStudent();
 
 		$data=array();
 		$data['user']=$user;
+
+		$data['dashboard_centres']=$centres;
+		$data['dashboard_trainers']=$trainer;
+		$data['dashboard_batch']=$batches;
+		$data['dashboard_student']=$students;
 
 		if(!empty($user)){
 
 			$this->load->view('dashboard/header',$data);
 			$this->load->view('dashboard/sidebar');
-			$this->load->view('dashboard/main');
+			$this->load->view('dashboard/main',$data);
 			$this->load->view('dashboard/footer');
 
 		}else{
@@ -90,9 +101,6 @@ class Dashboard extends CI_controller{
 		}
 
 	}
-
-	
-
 
 	function logout(){
 		$this->session->unset_userdata('user');
