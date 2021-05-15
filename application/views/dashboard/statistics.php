@@ -51,45 +51,26 @@
     <th width="15%">Trainer Email </th>     
   </tr>
     </thead>
+    <?php $count=1?>
         <tbody>
+        <?php foreach($tbl_students as $student){?>
   <tr>
-    <td>1.</td>
-    <td>NSTI Dehradun</td>
-    <td>452 </td>
-    <td>681</td>
-    <td>739</td>
-    <td>Rajesh</td>
-    <td>Aman</td>
-    <td>aman@gmail.com</td>  
+    <td><?php echo $count;?></td>
+    <td><?php echo $student['Centre'];?></td>
+    <td><?php echo $student['Batch-1'];?></td>
+    <td><?php echo $student['Batch-2'];?></td>
+    <td><?php echo $student['Batch-3'];?></td>
+    <td><?php echo $student['poc_name'];?>/td>
+    <td><?php echo $student['trainer_name'];?></td>
+    <td><?php echo $student['email'];?></td>  
   </tr>
-    
-  <tr>
-    <td>2.</td>
-    <td>NSTI Noida</td>
-    <td>628 </td>
-    <td>398</td>
-    <td>428</td>
-    <td>Jon</td>
-    <td>Deepak</td>
-    <td>deepak@gmail.com</td>  
-  </tr>
-    
-  <tr>
-    <td>3.</td>
-    <td>NSTI Indore</td>
-    <td>385 </td>
-    <td>826</td>
-    <td>675</td>
-    <td>Raghav</td>
-    <td>Seema</td>
-    <td>seema@gmail.com</td>  
-  </tr>  
+    <?php 
+        $count++;
+      }?>
     </tbody>
 </table>
 
-<?php print_r($tbl_students); ?>
-                      
-                      </div></div>
+</div></div>
                    
        
            
