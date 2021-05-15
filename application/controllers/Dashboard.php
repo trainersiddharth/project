@@ -69,15 +69,18 @@ class Dashboard extends CI_controller{
 	public function skillsbuildPerformance(){
 
 		$user=$this->session->userdata('user');
+		$this->load->model('Dashboard_Model');
+		$x=$this->Dashboard_Model->instituteBatchCount();
 
 		$data=array();
 		$data['user']=$user;
+		$data['centre_wise']=$x;
 
 		if(!empty($user)){
 
 			$this->load->view('dashboard/header',$data);
 			$this->load->view('dashboard/sidebar');
-			$this->load->view('dashboard/skillsbuild');
+			$this->load->view('dashboard/skillsbuild',$data);
 			$this->load->view('dashboard/footer');
 
 		}else{
