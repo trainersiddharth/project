@@ -102,29 +102,19 @@
   </tr>
     </thead>
         <tbody>
+        <?php $count=1; ?>
+        <?php foreach($centre_wise as $d){?>
   <tr>
-    <td>1.</td>
-    <td>NSTI Dehradun</td>
-    <td>1265 </td>
-    <td>2</td>
-    <td>180</td>  
+    <td><?php echo $count; ?></td>
+    <td><?php echo $d['centre']; ?></td>
+    <td><?php echo $d['students']; ?></td>
+    <td><?php echo $d['course']; ?></td>
+    <td><?php echo $d['duration']; ?></td>  
   </tr>
-    
-  <tr>
-    <td>2.</td>
-    <td>NSTI Noida</td>
-    <td>1362 </td>
-    <td>3</td>
-    <td>354</td>   
-  </tr>
-    
-  <tr>
-    <td>3.</td>
-    <td>NSTI Indore</td>
-    <td>351 </td>
-    <td>1</td>
-    <td>169</td>  
-  </tr>  
+
+  <?php $count++;
+   }
+  ?> 
     </tbody>
 </table>
       
