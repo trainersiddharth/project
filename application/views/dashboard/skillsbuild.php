@@ -108,7 +108,7 @@
     <td><?php echo $count; ?></td>
     <td><?php echo $d['centre']; ?></td>
     <td><?php echo $d['students']; ?></td>
-    <td><?php echo $d['course']; ?></td>
+    <td><?php echo $d['courses']; ?></td>
     <td><?php echo $d['duration']; ?></td>  
   </tr>
 
@@ -184,29 +184,21 @@
   </tr>
     </thead>
         <tbody>
+        <?php $count=1;?>
+
+        <?php foreach($student_wise as $s){?>
   <tr>
-    <td>1.</td>
-    <td>Kiran</td>
-    <td>NSTI Dehradun</td>
-    <td>2</td>
-    <td>165</td>  
+    <td><?php echo $count;?></td>
+    <td><?php echo $s['name'];?></td>
+    <td><?php echo $s['centre'];?></td>
+    <td><?php echo $s['courses'];?></td>
+    <td><?php echo $s['duration'];?></td>  
   </tr>
-    
-  <tr>
-    <td>2.</td>
-    <td>Rajendra Rana</td>
-    <td>NSTI Noida</td>
-    <td>3</td>
-    <td>354</td>   
-  </tr>
-    
-  <tr>
-    <td>3.</td>
-    <td>Mahesh Singh </td>
-    <td>NSTI Indore </td>
-    <td>1</td>
-    <td>149</td>  
-  </tr>  
+  <?php 
+        $count++;
+        }
+  ?>
+      
     </tbody>
 </table>
       

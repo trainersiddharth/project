@@ -36,9 +36,17 @@
             return $query->result_array();
         }
 
+        //select x.student_name as "name",y.name as "centre", x.no_of_courses as "courses" , x.duration_of_courses as "duration" from students x join centres y on x.centre_code=y.id
+
         public function skillsbuildCountCentreWise(){
             
             $query=$this->db->query('select y.name as "centre", count(x.id) as "students" , sum(x.no_of_courses) as "courses" , sum(x.duration_of_courses) as "duration" from students x join centres y on x.centre_code=y.id  group by x.centre_code,y.name');
+            return $query->result_array();
+        }
+
+        public function skillsbuildCountStudentWise(){
+            
+            $query=$this->db->query('select x.student_name as "name",y.name as "centre", x.no_of_courses as "courses" , x.duration_of_courses as "duration" from students x join centres y on x.centre_code=y.id');
             return $query->result_array();
         }
 

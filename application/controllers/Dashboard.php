@@ -71,10 +71,12 @@ class Dashboard extends CI_controller{
 		$user=$this->session->userdata('user');
 		$this->load->model('Dashboard_Model');
 		$x=$this->Dashboard_Model->skillsbuildCountCentreWise();
+		$y=$this->Dashboard_Model->skillsbuildCountStudentWise();
 
 		$data=array();
 		$data['user']=$user;
 		$data['centre_wise']=$x;
+		$data['student_wise']=$y;
 
 		if(!empty($user)){
 
