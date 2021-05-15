@@ -70,7 +70,7 @@ class Dashboard extends CI_controller{
 
 		$user=$this->session->userdata('user');
 		$this->load->model('Dashboard_Model');
-		$x=$this->Dashboard_Model->instituteBatchCount();
+		$x=$this->Dashboard_Model->skillsbuildCountCentreWise();
 
 		$data=array();
 		$data['user']=$user;
