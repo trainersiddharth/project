@@ -114,12 +114,10 @@ class Dashboard extends CI_controller{
 
 		$output="<option value=''>SELECT</option>";
 		$arr=$this->Dashboard_Model->getCentres();
-
-		if(!empty($arr)){
-			foreach($arr as $centre){
-				$output.="<option value='".$centre['institute']."'>".$centre['institute']."</option>";
-			}
+		foreach($arr as $centre){
+			$output.="<option value='".$centre['institute']."'>".$centre['institute']."</option>";
 		}
+		
 
 		echo json_encode($output);
 	}
