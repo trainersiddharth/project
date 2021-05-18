@@ -63,6 +63,8 @@ jQuery(document).ready(function($){
 <script>
     $(document).ready(function(){
 
+      alert("<?php echo base_url(); ?>Dashboard/loadCentre")
+      /*
       load_centre();
 
       function load_centre()
@@ -77,6 +79,8 @@ jQuery(document).ready(function($){
           }
         })
       }
+
+      */
 
 
     });
