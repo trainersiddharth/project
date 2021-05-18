@@ -72,7 +72,8 @@ jQuery(document).ready(function($){
           method:"POST",
           success:function(data)
           {
-            $('#imported_csv_data').html(data);
+            $('#centrefilter1').html(data);
+            $('#centrefilter2').html(data);
           }
         })
       }
