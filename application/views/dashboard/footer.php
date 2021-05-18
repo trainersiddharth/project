@@ -18,6 +18,41 @@
 <!-- jQuery -->
 <script src="<?php echo base_url();?>plugins/jquery/jquery.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+
+      
+      $("#sidebar_skills").click(function(){
+
+        //alert($('#centrefilter1').val())
+        
+        $.ajax({
+          url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
+          method:"POST",
+          data:{desc1:"fetch"},
+          datatype:'json',
+          error: function() {
+            alert('Something is wrong');
+          },
+
+          success:function(data)
+          {
+            alert(data);
+            $('#centrefilter1').html(data);
+            $('#centrefilter2').html(data);
+          }
+        });
+        
+
+      });
+
+    });
+</script>
+
+
+
+
+
 <!-- Bootstrap -->
 <script src="<?php echo base_url();?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
@@ -60,36 +95,6 @@ jQuery(document).ready(function($){
 </script>
 
 
-<script>
-    $(document).ready(function(){
-
-      
-      $("#sidebar_skills").click(function(){
-
-        //alert($('#centrefilter1').val())
-        
-        $.ajax({
-          url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
-          method:"POST",
-          data:{desc1:"fetch"},
-          datatype:'json',
-          error: function() {
-            alert('Something is wrong');
-          },
-
-          success:function(data)
-          {
-            alert(data);
-            $('#centrefilter1').html(data);
-            $('#centrefilter2').html(data);
-          }
-        });
-        
-
-      });
-
-    });
-</script>
 
 
 </body>
