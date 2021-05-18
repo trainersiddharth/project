@@ -63,8 +63,6 @@ jQuery(document).ready(function($){
 <script>
     $(document).ready(function(){
 
-      alert("<?php echo base_url(); ?>Dashboard/loadCentre")
-      /*
       load_centre();
 
       function load_centre()
@@ -74,13 +72,14 @@ jQuery(document).ready(function($){
           method:"POST",
           success:function(data)
           {
+            alert(data);
             $('#centrefilter1').html(data);
             $('#centrefilter2').html(data);
           }
         })
       }
 
-      */
+      
 
 
     });
