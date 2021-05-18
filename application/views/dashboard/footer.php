@@ -69,9 +69,9 @@ jQuery(document).ready(function($){
         //alert($('#centrefilter1').val())
         
         $.ajax({
-          url:"<?php echo base_url(); ?>Dashboard/loadCentre",
+          url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
           method:"POST",
-          data:{desc:"fetch"},
+          data:{desc1:"fetch"},
           datatype:'json',
           error: function() {
             alert('Something is wrong');
