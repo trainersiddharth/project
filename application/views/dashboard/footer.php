@@ -15,6 +15,9 @@
 <!-- REQUIRED SCRIPTS -->
 
 
+<!-- jQuery -->
+<script src="<?php echo base_url();?>plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="<?php echo base_url();?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
