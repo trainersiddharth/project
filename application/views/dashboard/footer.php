@@ -58,5 +58,29 @@ jQuery(document).ready(function($){
   target.addClass('active');
 });
 </script>
+
+
+<script>
+    $(document).ready(function(){
+
+      load_centre();
+
+      function load_centre()
+      {
+        $.ajax({
+          url:"<?php echo base_url(); ?>Dashboard/loadCentre",
+          method:"POST",
+          success:function(data)
+          {
+            $('#imported_csv_data').html(data);
+          }
+        })
+      }
+
+
+    });
+</script>
+
+
 </body>
 </html>
