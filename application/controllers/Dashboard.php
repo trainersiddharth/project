@@ -102,9 +102,26 @@ class Dashboard extends CI_controller{
 
 	}
 
-	function logout(){
+	public function logout(){
 		$this->session->unset_userdata('user');
 		redirect(base_url('Login/index'));
+	}
+
+	//ajax functions 
+
+    public function loadCentre(){
+		$this->load->model('Dashboard_Model');
+
+		$output="<option value=''>SELECT</option>";
+		$arr=$this->Dashboard_Model->getCentres();
+
+		if(!empty($arr)){
+			foreach($arr as $centre){
+				$output.="<option value='".$centre['institute']."'>".$centre['institute']."</option>";
+			}
+		}
+
+		echo $output;
 	}
 }
 
