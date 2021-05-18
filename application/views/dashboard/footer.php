@@ -63,10 +63,9 @@ jQuery(document).ready(function($){
 <script>
     $(document).ready(function(){
 
-      load_centre();
+      
+      $("#sidebar_skills").click(function(){
 
-      function load_centre()
-      {
         $.ajax({
           url:"<?php echo base_url(); ?>Dashboard/loadCentre",
           method:"POST",
@@ -76,11 +75,9 @@ jQuery(document).ready(function($){
             $('#centrefilter1').html(data);
             $('#centrefilter2').html(data);
           }
-        })
-      }
+        });
 
-      
-
+      });
 
     });
 </script>

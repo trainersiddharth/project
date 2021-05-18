@@ -37,7 +37,7 @@
           </li>
             
            <li class="nav-item">
-            <a href="<?php echo base_url('Dashboard/skillsbuildPerformance')?>" class="nav-link">
+            <a id="sidebar_skills" href="<?php echo base_url('Dashboard/skillsbuildPerformance')?>" class="nav-link">
             <i class="nav-icon fas fa-chart-line"></i>
               <p>SkillsBuild Performance </p>
             </a>
