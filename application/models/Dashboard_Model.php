@@ -50,6 +50,14 @@
             return $query->result_array();
         }
 
+
+        // ajax functions
+
+        public function getCentres(){
+            $query=$this->db->query('select y.name as "institute" centres y');
+            return $query->result_array();
+        }
+
     }
 
 ?>
