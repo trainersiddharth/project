@@ -121,7 +121,7 @@ class Dashboard extends CI_controller{
 			}
 		}
 
-		echo $output;
+		echo json_encode($output);
 	}
 }
 
