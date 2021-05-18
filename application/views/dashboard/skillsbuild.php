@@ -74,7 +74,7 @@
                       
                     <label class="col-sm-1 col-form-label">NSTI:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select id="centrefilter1" class="form-control">
                         <option>Select</option>    
                         <option>NSTI Noida</option>
                         <option>NSTI Dehradun</option>
@@ -152,7 +152,7 @@
                       
                     <label class="col-sm-1 col-form-label">NSTI:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select  id="centrefilter2" class="form-control">
                         <option>Select</option>    
                         <option>NSTI Noida</option>
                         <option>NSTI Dehradun</option>
