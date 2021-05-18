@@ -72,6 +72,7 @@ jQuery(document).ready(function($){
           url:"<?php echo base_url(); ?>Dashboard/loadCentre",
           method:"POST",
           data:{desc:"fetch"},
+          datatype:'text',
           error: function() {
             alert('Something is wrong');
           },
