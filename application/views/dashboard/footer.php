@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
         $.ajax({
           url:"<?php echo base_url(); ?>Dashboard/loadCentre",
           method:"POST",
-
+          data:{desc:"fetch"},
           error: function() {
             alert('Something is wrong');
           },
