@@ -54,8 +54,40 @@
         // ajax functions
 
         public function getCentres(){
-            $query=$this->db->query('select y.name as "institute" from centres y');
+            $query=$this->db->query('select y.id as "id", y.name as "institute" from centres y');
             return $query->result_array();
+        }
+
+        public function getBatches(){
+            $query=$this->db->query('select id , batch from batches');
+            return $query->result_array();
+        }
+
+        public function batch_and_centre_filter_student(){
+
+        }
+
+        public function batch_filter_student($b){
+
+            $query=$this->db->query('select x.student_name as "name",y.name as "centre", x.no_of_courses as "courses" , x.duration_of_courses as "duration" from students x join centres y on x.centre_code=y.id where x.batch_code='.$b);
+            return $query->result_array();
+        }
+
+        public function centre_filter_student(){
+            
+        }
+
+
+        public function batch_and_centre_filter_centre(){
+
+        }
+
+        public function batch_filter_centre(){
+            
+        }
+
+        public function centre_filter_centre(){
+            
         }
 
     }

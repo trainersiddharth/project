@@ -115,10 +115,60 @@ class Dashboard extends CI_controller{
 		$output="<option value=''>SELECT</option>";
 		$arr=$this->Dashboard_Model->getCentres();
 		foreach($arr as $centre){
-			$output.="<option value='".$centre['institute']."'>".$centre['institute']."</option>";
+			$output.="<option value='".$centre['id']."'>".$centre['institute']."</option>";
 		}
 		echo $output;
 	}
+
+
+	//ajax functions 
+
+    public function loadBatch(){
+		$this->load->model('Dashboard_Model');
+
+		$output="<option value=''>SELECT</option>";
+		$arr=$this->Dashboard_Model->getBatches();
+		foreach($arr as $centre){
+			$output.="<option value='".$centre['id']."'>".$centre['batch']."</option>";
+		}
+		echo $output;
+	}	
+
+
+	public function getDataFilter_centre(){
+
+		$this->load->model('Dashboard_Model');
+		$postData = $this->input->post();
+		
+		echo $postData["batch_id"]."-".$postData["centre_id"];
+	}
+
+
+	public function getDataFilter_student(){
+
+		$this->load->model('Dashboard_Model');
+		$postData = $this->input->post();
+
+		if($postData["batch_id"]!=0 && $postData["centre_id"] !=0){
+			
+		}else if($postData["batch_id"]!=0){
+			$arr=$this->Dashboard_Model->batch_filter_student($postData["batch_id"]);
+		}
+		$output="";
+		$output.="<table><tr><th>S.No</th><th>Student Name</th><th>NSTI Name</th><th>Courses</th><th>Learning Hours</th></tr>";
+		$count=1;
+		foreach($arr as $s){
+			echo "<tr><td>".$count."</td>";
+			echo "<td>".$s['name']."</td>";
+			echo "<td>".$s['centre']."</td>";
+			echo "<td>".$s['courses']."</td>";
+			echo "<td>".$s['duration']."</td></tr>";
+			++$count;
+		}
+
+		echo $output;
+	}
+
 }
 
 ?>

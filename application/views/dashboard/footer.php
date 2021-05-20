@@ -23,9 +23,10 @@
 
 $(document).ready(function(){
 
-load_data();
+load_Cen();
+load_Bat();
 
-function load_data()
+function load_Cen()
 {
   $.ajax({
     url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
@@ -38,44 +39,118 @@ function load_data()
   })
 }
 
+
+function load_Bat()
+{
+  $.ajax({
+    url:"<?php echo base_url('Dashboard/loadBatch'); ?>",
+    method:"POST",
+    success:function(data)
+    {
+      $('#batchfilter1').html(data);
+      $('#batchfilter2').html(data);
+    }
+  })
+}
+
 });
-
-
-    /*
-    $(document).ready(function(){
-
-      
-      $("#sidebar_skills").click(function(){
-
-        //alert($('#centrefilter1').val())
-        
-        $.ajax({
-          url:"",
-          method:"POST",
-          data:{desc1:"fetch"},
-          datatype:'json',
-          error: function(xhr, status, error) {
-            var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert('Error - ' + errorMessage);
-          },
-
-          success:function(data)
-          {
-            alert(data);
-            $('#centrefilter1').html(data);
-            $('#centrefilter2').html(data);
-          }
-        });
-        
-
-      });
-
-    });
-    */
 </script>
 
 
 
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+      $('#centrefilter1').change(function(){
+
+      x=$('#batchfilter1').val();
+      y=$('#centrefilter1').val();
+
+      $.ajax({
+        url:"<?php echo base_url('Dashboard/getDataFilter_centre'); ?>",
+        method:"POST",
+        data:{
+          batch_id:x,
+          centre_id:y
+        },
+        success:function(data)
+        {
+          alert(data);
+        }
+      })
+
+      });
+
+
+      $('#batchfilter1').change(function(){
+
+      x=$('#batchfilter1').val();
+      y=$('#centrefilter1').val();
+
+
+      $.ajax({
+      url:"<?php echo base_url('Dashboard/getDataFilter_centre'); ?>",
+      method:"POST",
+      data:{
+        batch_id:x,
+        centre_id:y
+      },
+      success:function(data)
+      {
+        alert(data);
+      }
+      })
+
+      });
+
+      $('#centrefilter2').change(function(){
+
+      x=$('#batchfilter2').val();
+      y=$('#centrefilter2').val();
+
+      $.ajax({
+        url:"<?php echo base_url('Dashboard/getDataFilter_student'); ?>",
+        method:"POST",
+        data:{
+          batch_id:x,
+          centre_id:y
+        },
+        success:function(data)
+        {
+          $('tbl_for_student').html(data);
+        }
+      })
+
+      });
+
+
+      $('#batchfilter2').change(function(){
+
+      x=$('#batchfilter2').val();
+      y=$('#centrefilter2').val();
+
+
+      $.ajax({
+      url:"<?php echo base_url('Dashboard/getDataFilter_student'); ?>",
+      method:"POST",
+      data:{
+        batch_id:x,
+        centre_id:y
+      },
+      success:function(data)
+      {
+        $('tbl_for_student').html(data);
+      }
+      })
+
+      });
+
+});
+
+</script>
 
 
 <!-- Bootstrap -->
@@ -99,6 +174,12 @@ function load_data()
     });
     $(document).ready(function() {
         $('#MyTable2').DataTable({
+            responsive: true
+        });
+    });
+
+    $(document).ready(function() {
+        $('#tbl_for_student').DataTable({
             responsive: true
         });
     });

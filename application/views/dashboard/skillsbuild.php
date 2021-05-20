@@ -64,7 +64,7 @@
                       
                       <label class="col-sm-1 col-form-label">Batch:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select id="batchfilter1"  class="form-control">
                         <option>Select</option>    
                         <option>Batch 1</option>
                         <option>Batch 2</option>
@@ -75,7 +75,7 @@
                     <label class="col-sm-1 col-form-label">NSTI:</label>
                     <div class="col-sm-4">
                         <select id="centrefilter1" class="form-control">
-                        <option>Select</option>    
+                        <option>Select</option>   
                         <option>NSTI Noida</option>
                         <option>NSTI Dehradun</option>
                          <option>NSTI Indore</option>
@@ -142,7 +142,7 @@
                       
                       <label class="col-sm-1 col-form-label">Batch:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select id="batchfilter2"  class="form-control">
                         <option>Select</option>    
                         <option>Batch 1</option>
                         <option>Batch 2</option>
@@ -173,7 +173,7 @@
             
                                
                                                   
-<table width="100%" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;" class="tablelist"  id="MyTable2">
+<table id="tbl_for_student" width="100%" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;" class="tablelist">
     <thead>
    <tr>
     <th width="10%">S.No </th>
