@@ -63,8 +63,9 @@
             return $query->result_array();
         }
 
-        public function batch_and_centre_filter_student(){
-
+        public function batch_and_centre_filter_student($b,$c){
+            $query=$this->db->query('select x.student_name as "name",y.name as "centre", x.no_of_courses as "courses" , x.duration_of_courses as "duration" from students x join centres y on x.centre_code=y.id where x.batch_code='.$b.' and x.centre_code='.$c);
+            return $query->result_array();
         }
 
         public function batch_filter_student($b){
@@ -73,21 +74,25 @@
             return $query->result_array();
         }
 
-        public function centre_filter_student(){
-            
+        public function centre_filter_student($c){
+            $query=$this->db->query('select x.student_name as "name",y.name as "centre", x.no_of_courses as "courses" , x.duration_of_courses as "duration" from students x join centres y on x.centre_code=y.id where x.centre_code='.$c);
+            return $query->result_array();
         }
 
 
-        public function batch_and_centre_filter_centre(){
-
+        public function batch_and_centre_filter_centre($b,$c){
+            $query=$this->db->query('select y.name as "centre", count(x.id) as "students" , sum(x.no_of_courses) as "courses" , sum(x.duration_of_courses) as "duration" from students x join centres y on x.centre_code=y.id  where x.batch_code='.$b.' and x.centre_code='.$c.' group by x.centre_code,y.name ');
+            return $query->result_array();
         }
 
-        public function batch_filter_centre(){
-            
+        public function batch_filter_centre($b){
+            $query=$this->db->query('select y.name as "centre", count(x.id) as "students" , sum(x.no_of_courses) as "courses" , sum(x.duration_of_courses) as "duration" from students x join centres y on x.centre_code=y.id  where x.batch_code='.$b.' group by x.centre_code,y.name ');
+            return $query->result_array();
         }
 
-        public function centre_filter_centre(){
-            
+        public function centre_filter_centre($c){
+            $query=$this->db->query('select y.name as "centre", count(x.id) as "students" , sum(x.no_of_courses) as "courses" , sum(x.duration_of_courses) as "duration" from students x join centres y on x.centre_code=y.id  where x.centre_code='.$c.' group by x.centre_code,y.name ');
+            return $query->result_array();
         }
 
     }

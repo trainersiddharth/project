@@ -78,7 +78,7 @@ $(document).ready(function(){
         },
         success:function(data)
         {
-          alert(data);
+          $('#tbl_for_centre').html(data);
         }
       })
 
@@ -100,7 +100,7 @@ $(document).ready(function(){
       },
       success:function(data)
       {
-        alert(data);
+        $('#tbl_for_centre').html(data);
       }
       })
 
@@ -120,7 +120,7 @@ $(document).ready(function(){
         },
         success:function(data)
         {
-          $('tbl_for_student').html(data);
+          $('#tbl_for_student').html(data);
         }
       })
 
@@ -142,7 +142,7 @@ $(document).ready(function(){
       },
       success:function(data)
       {
-        $('tbl_for_student').html(data);
+        $('#tbl_for_student').html(data);
       }
       })
 
@@ -180,6 +180,12 @@ $(document).ready(function(){
 
     $(document).ready(function() {
         $('#tbl_for_student').DataTable({
+            responsive: true
+        });
+    });
+
+    $(document).ready(function() {
+        $('#tbl_for_centre').DataTable({
             responsive: true
         });
     });

@@ -91,7 +91,7 @@
                   <div class="row"><div class="col-lg-12">
                    
                                                   
-<table width="100%" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;" class="tablelist"  id="MyTable">
+<table id="tbl_for_centre" width="100%" border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;" class="tablelist">
     <thead>
    <tr>
     <th width="10%">S.No </th>

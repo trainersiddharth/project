@@ -139,8 +139,34 @@ class Dashboard extends CI_controller{
 
 		$this->load->model('Dashboard_Model');
 		$postData = $this->input->post();
+
+		if($postData["batch_id"]!=0 && $postData["centre_id"] !=0){
+			$arr=$this->Dashboard_Model->batch_and_centre_filter_centre($postData["batch_id"],$postData["centre_id"]);
+
+		}else if($postData["batch_id"]!=0){
+			$arr=$this->Dashboard_Model->batch_filter_centre($postData["batch_id"]);
+
+		}else if($postData["centre_id"]!=0){
+			$arr=$this->Dashboard_Model->centre_filter_centre($postData["centre_id"]);
+		}
+
+		$output="";
+		$output.="<table><tr><th>S.No</th><th>NSTI Name</th><th>Students</th><th>Course Completion</th><th>Learning Hours</th></tr>";
+		$count=1;
+		if(!empty($arr)){
+		foreach($arr as $d){
+			$output.="<tr><td>". $count."</td>";
+			$output.="<td>". $d['centre']."</td>";
+			$output.="<td>". $d['students']."</td>";
+			$output.="<td>". $d['courses']."</td>";
+			$output.="<td>". $d['duration']."</td></tr>";
+			$count++;
+		}
+	}else{
+		$output.= "<tr><td colspan='5' align='center'><strong>No Data Available</strong></td></tr>";
+	}
 		
-		echo $postData["batch_id"]."-".$postData["centre_id"];
+		echo $output;
 	}
 
 
@@ -149,21 +175,32 @@ class Dashboard extends CI_controller{
 		$this->load->model('Dashboard_Model');
 		$postData = $this->input->post();
 
+		
 		if($postData["batch_id"]!=0 && $postData["centre_id"] !=0){
+
+			$arr=$this->Dashboard_Model->batch_and_centre_filter_student($postData["batch_id"],$postData["centre_id"]);
 			
 		}else if($postData["batch_id"]!=0){
 			$arr=$this->Dashboard_Model->batch_filter_student($postData["batch_id"]);
+
+		}else if($postData["centre_id"]!=0){
+			$arr=$this->Dashboard_Model->centre_filter_student($postData["centre_id"]);
+
 		}
 		$output="";
 		$output.="<table><tr><th>S.No</th><th>Student Name</th><th>NSTI Name</th><th>Courses</th><th>Learning Hours</th></tr>";
 		$count=1;
-		foreach($arr as $s){
-			echo "<tr><td>".$count."</td>";
-			echo "<td>".$s['name']."</td>";
-			echo "<td>".$s['centre']."</td>";
-			echo "<td>".$s['courses']."</td>";
-			echo "<td>".$s['duration']."</td></tr>";
-			++$count;
+		if(!empty($arr)){
+			foreach($arr as $s){
+				$output.= "<tr><td>".$count."</td>";
+				$output.= "<td>".$s['name']."</td>";
+				$output.= "<td>".$s['centre']."</td>";
+				$output.= "<td>".$s['courses']."</td>";
+				$output.= "<td>".$s['duration']."</td></tr>";
+				++$count;
+			}
+		}else{
+			$output.= "<tr><td colspan='5' align='center'><strong>No Data Available</strong></td></tr>";
 		}
 
 		echo $output;
