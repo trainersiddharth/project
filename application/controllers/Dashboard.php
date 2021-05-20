@@ -117,9 +117,7 @@ class Dashboard extends CI_controller{
 		foreach($arr as $centre){
 			$output.="<option value='".$centre['institute']."'>".$centre['institute']."</option>";
 		}
-		
-
-		echo json_encode($output);
+		echo $output;
 	}
 }
 

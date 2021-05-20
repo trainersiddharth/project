@@ -18,7 +18,30 @@
 <!-- jQuery -->
 <script src="<?php echo base_url();?>plugins/jquery/jquery.min.js"></script>
 
+
 <script>
+
+$(document).ready(function(){
+
+load_data();
+
+function load_data()
+{
+  $.ajax({
+    url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
+    method:"POST",
+    success:function(data)
+    {
+      $('#centrefilter1').html(data);
+      $('#centrefilter2').html(data);
+    }
+  })
+}
+
+});
+
+
+    /*
     $(document).ready(function(){
 
       
@@ -27,7 +50,7 @@
         //alert($('#centrefilter1').val())
         
         $.ajax({
-          url:"<?php echo base_url('Dashboard/loadCentre'); ?>",
+          url:"",
           method:"POST",
           data:{desc1:"fetch"},
           datatype:'json',
@@ -48,6 +71,7 @@
       });
 
     });
+    */
 </script>
 
 
