@@ -9,12 +9,16 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Batch1', 'No of Students'],
-          ['150', 150],
-          ['200', 200]
-        ]);
+          ['Batch1', 'No of Students']
 
- 
+          <?php foreach($dashboard_map1 as $m){
+            
+            echo ",['".$m["centre"]."',".$m["students"]."]";
+          }
+            
+          ?>
+
+        ]);
 
         var options = {
           width: '100%',
@@ -47,11 +51,14 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Batch2', 'No of Students'],
-          ['120', 120],
-          ['250', 250],
-          ['380', 380],  
-          ['170', 170]
+          ['Batch2', 'No of Students']
+          <?php foreach($dashboard_map2 as $m){
+            
+            echo ",['".$m["centre"]."',".$m["students"]."]";
+          }
+            
+          ?>
+          
         ]);
 
  
@@ -87,27 +94,16 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Batch3', 'No of Students'],
-          ['140', 140],
-          ['220', 220],
-          ['310', 310],  
-          ['130', 130],
-          ['170', 170],
-          ['290', 290],
-          ['360', 360],  
-          ['120', 120],
-          ['150', 150],
-          ['280', 280],
-          ['330', 330],  
-          ['170', 170],
-          ['130', 130],
-          ['280', 280],
-          ['340', 340],  
-          ['180', 180]  
+          ['Batch3', 'No of Students']
+
+          <?php foreach($dashboard_map3 as $m){
+            
+            echo ",['".$m["centre"]."',".$m["students"]."]";
+          }
+            
+          ?>
+          
         ]);
-
- 
-
         var options = {
           width: '100%',
         height:300,
@@ -160,9 +156,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
             
-          <div class="col-lg-12">      
     
           <div class="row">
             
@@ -255,16 +249,17 @@
        
             
         </div>
-          
-     
+         
+         </div>  
   
+              
         <div class="row">
             
           <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>1032</h3>
+                <h3>18</h3>
 
                 <p>Graduates</p>
               </div>
@@ -278,7 +273,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>1842</h3>
+                <h3>365</h3>
 
                 <p>Students in Training</p>
               </div>
@@ -294,7 +289,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>1245</h3>
+                <h3>365</h3>
 
                 <p>Students Eligible for Internship</p>
               </div>
@@ -305,12 +300,12 @@
             </div>
           </div>
           <!-- ./col -->
-             
+            
           <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>965</h3>
+                <h3>88</h3>
 
                 <p> Internships</p>
               </div>
@@ -324,7 +319,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>1364</h3>
+                <h3>70</h3>
 
                 <p>Eligible for Jobs</p>
               </div>
@@ -340,7 +335,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>867</h3>
+                <h3>18</h3>
 
                 <p>Placements</p>
               </div>
@@ -350,15 +345,11 @@
              
             </div>
           </div>
-          <!-- ./col -->
-            
-       
-            
-        </div>
-          
-           
-         </div>
-              </div>
+          <!-- ./col -->  
+         
+        </div>   
+      
+    </div>
            
           </div>
           <!-- /.col-md-6 -->
@@ -369,7 +360,12 @@
           
           
         
-   <!--Graph chart start-->
+       
+     <br><br>  
+          </div>
+          <!-- /.col-md-6 -->
+          
+          <!--Graph chart start-->
           
          <div class="row">   
   <div class="col-lg-4">    
@@ -383,20 +379,16 @@
       <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart3"></div></div>        
    </div>                 
           </div>
-      <!--Graph chart end-->      
-     <br><br>  
-          </div>
-          <!-- /.col-md-6 -->
+      <!--Graph chart end-->  
+          <br><br>
           
-            
-        </div>
-        <!-- /.row -->
-      </div>
       <!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+  
+</div>
+      <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

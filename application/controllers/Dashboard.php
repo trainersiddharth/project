@@ -12,6 +12,10 @@ class Dashboard extends CI_controller{
 		$batches=$this->Dashboard_Model->countBatch();
 		$students=$this->Dashboard_Model->countStudent();
 
+		$map1=$this->Dashboard_Model->batch_filter_centre(1);
+		$map2=$this->Dashboard_Model->batch_filter_centre(2);
+		$map3=$this->Dashboard_Model->batch_filter_centre(3);
+
 		$data=array();
 		$data['user']=$user;
 
@@ -19,6 +23,10 @@ class Dashboard extends CI_controller{
 		$data['dashboard_trainers']=$trainer;
 		$data['dashboard_batch']=$batches;
 		$data['dashboard_student']=$students;
+
+		$data['dashboard_map1']=$map1;
+		$data['dashboard_map2']=$map2;
+		$data['dashboard_map3']=$map3;
 
 		if(!empty($user)){
 
@@ -151,7 +159,7 @@ class Dashboard extends CI_controller{
 		}
 
 		$output="";
-		$output.="<table><tr><th>S.No</th><th>NSTI Name</th><th>Students</th><th>Course Completion</th><th>Learning Hours</th></tr>";
+		$output.="<thead><tr><th>S.No</th><th>NSTI Name</th><th>Students</th><th>Course Completion</th><th>Learning Hours</th></tr></thead><tbody>";
 		$count=1;
 		if(!empty($arr)){
 		foreach($arr as $d){
@@ -162,6 +170,7 @@ class Dashboard extends CI_controller{
 			$output.="<td>". $d['duration']."</td></tr>";
 			$count++;
 		}
+		$output.="</tbody>";
 	}else{
 		$output.= "<tr><td colspan='5' align='center'><strong>No Data Available</strong></td></tr>";
 	}
@@ -188,7 +197,7 @@ class Dashboard extends CI_controller{
 
 		}
 		$output="";
-		$output.="<table><tr><th>S.No</th><th>Student Name</th><th>NSTI Name</th><th>Courses</th><th>Learning Hours</th></tr>";
+		$output.="<thead><tr><th>S.No</th><th>Student Name</th><th>NSTI Name</th><th>Courses</th><th>Learning Hours</th></tr></thead><tbody>";
 		$count=1;
 		if(!empty($arr)){
 			foreach($arr as $s){
@@ -199,6 +208,7 @@ class Dashboard extends CI_controller{
 				$output.= "<td>".$s['duration']."</td></tr>";
 				++$count;
 			}
+			$output.="</tbody>";
 		}else{
 			$output.= "<tr><td colspan='5' align='center'><strong>No Data Available</strong></td></tr>";
 		}
