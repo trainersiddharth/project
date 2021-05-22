@@ -166,7 +166,9 @@ class Admin_Controller extends CI_controller{
 
 
 	public function testmail(){
-		$mail=$this->load->library('class.phpmailer.php');
+
+		$this->load->library('phpmailer_lib');
+		$mail=$this->phpmailer_lib->load();
 
 		$mail->IsSMTP();
 		$mail->Host = "smtp.gmail.com";
@@ -179,7 +181,7 @@ class Admin_Controller extends CI_controller{
 
 		$mail->From = "webmaster@fice.in";
 		$mail->FromName = "Testing CI";
-		$mail->AddAddress("siddhath@edunetfoundation.org");
+		$mail->AddAddress("siddharth@edunetfoundation.org");
 		//$mail->AddReplyTo("mail@mail.com");
 
 		$mail->IsHTML(true);
@@ -194,9 +196,6 @@ class Admin_Controller extends CI_controller{
 		echo "Mailer Error: " . $mail->ErrorInfo;
 		exit;
 		}
-
-
-
 	}
 
 }
