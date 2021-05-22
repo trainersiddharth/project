@@ -164,6 +164,41 @@ class Admin_Controller extends CI_controller{
 		redirect(base_url('Admin_Controller/addStudent'));	
 	}
 
+
+	public function testmail(){
+		$mail=$this->load->library('class.phpmailer.php');
+
+		$mail->IsSMTP();
+		$mail->Host = "smtp.gmail.com";
+
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = "tls";
+		$mail->Port = 587;
+		$mail->Username = "webmaster@fice.in";
+		$mail->Password = "fice@bangalore";
+
+		$mail->From = "webmaster@fice.in";
+		$mail->FromName = "Testing CI";
+		$mail->AddAddress("siddhath@edunetfoundation.org");
+		//$mail->AddReplyTo("mail@mail.com");
+
+		$mail->IsHTML(true);
+
+		$mail->Subject = "Test message CI";
+		$mail->Body = "Test Mail<b>in bold!</b>";
+		//$mail->AltBody = "This is the body in plain text for non-HTML mail clients";
+
+		if(!$mail->Send())
+		{
+		echo "Message could not be sent. <p>";
+		echo "Mailer Error: " . $mail->ErrorInfo;
+		exit;
+		}
+
+
+
+	}
+
 }
 
 
