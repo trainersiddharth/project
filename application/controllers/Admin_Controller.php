@@ -181,7 +181,7 @@ class Admin_Controller extends CI_controller{
 
 		$mail->From = "webmaster@fice.in";
 		$mail->FromName = "Testing CI";
-		$mail->AddAddress("siddharth@edunetfoundation.org");
+		$mail->AddAddress("mahendra@edunetfoundation.org");
 		//$mail->AddReplyTo("mail@mail.com");
 
 		$mail->IsHTML(true);
@@ -195,6 +195,37 @@ class Admin_Controller extends CI_controller{
 		echo "Message could not be sent. <p>";
 		echo "Mailer Error: " . $mail->ErrorInfo;
 		exit;
+		}
+	}
+
+
+	public function testmailci(){
+
+		$config =array(
+			'mailpath'=>'/usr/sbin/sendmail',
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port'=>465,
+			'smtp_user'=>'webmaster@fice.in',
+			'smtp_pass'=>'fice@bangalore',
+			'smtp_crypto'=>'tls',
+			'charset' => 'iso-8859-1',
+			'mailtype' => 'html',
+			'wordwrap' => TRUE
+		);
+
+		$this->load->library('email',$config);
+		//$this->email->initialize();
+		$this->email->set_newline("\r\n");
+
+		$this->email->from('webmaster@fice.in', 'Edunet Foundation');
+		$this->email->to('siddharth@edunetfoundation.org');
+		$this->email->subject('Sample CI Testing ');
+		$this->email->message('Sample Testing from CI Server');
+
+		if(!$this->email->send()){
+			echo 'Email Not Sent Successfully';
+			show_error($this->email->print_debugger());
 		}
 	}
 
