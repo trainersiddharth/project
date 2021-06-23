@@ -1,0 +1,27 @@
+.login-page, .register-page{ background:url("../img/login-img.jpg") no-repeat;background-size: cover;}
+.login-page, .register-page h1{ color: #ffffff;}
+.img-responsive{ width: 100%}
+.login-card-body {border-radius:10px !important;}
+.main-sidebar .brand-link {background: #ffffff !important;}
+label:not(.form-check-label):not(.custom-file-label) { font-weight:normal !important;}
+.main-sidebar .brand-text{ color: #161754 !important;}
+.subheading{ font-weight: bold; font-size:1.4rem; color: #007bff; padding: 30px 0px 10px 0px;}
+.nav-tabs .nav-link.active{font-weight: bold;}
+[class*=sidebar-dark-] {background-color: #131459 !important;}
+.captchabox{background:url('../img/captcha-bg.jpg') repeat; width: 100%; font-weight: bold; text-align: center; padding: 4px 0px; color: #333333;letter-spacing: 3px; font-size: 20px; margin-right: 22px;font-family: 'Acme', sans-serif;}
+.schoolteacherimg{border-radius:100%; width: 100px; height: 100px; border:#dee2e6 solid 1px; margin: 10px 0px; padding: 3px;}
+.schoolteacherimg:hover{opacity:0.7;}
+.profileimg{border-radius:100%; width: 150px; height: 150px; border:#dee2e6 solid 1px; margin: 10px 0px; padding: 3px;}
+.profileimg:hover{opacity:0.7;}
+.schoolteacherlist{  list-style: none; padding-left: 0px;}
+.schoolteacherlist li{border-bottom: #dee2e6  solid 1px; padding: 10px 10px;}
+.schoolteacherlist li:last-child{border-bottom:none; padding-bottom: 0px;}
+.tablelist th{ font-weight: bold; background: #007bff; color: #ffffff; border: #cccccc solid 1px;}
+.tablelist td{border: #cccccc solid 1px;}
+.innovationslist{ list-style: none; padding-left: 0px;}
+.innovationslist li{ border-bottom: #dee2e6  solid 1px; padding-bottom: 50px; margin-bottom: 50px;}
+.layout-navbar-fixed .wrapper .brand-link, .layout-navbar-fixed .wrapper .main-sidebar:hover .brand-link{width:290px;}
+@media (min-width: 768px){
+.main-sidebar{width: 290px;}
+body:not(.sidebar-mini-md) .content-wrapper, body:not(.sidebar-mini-md) .main-header, body:not(.sidebar-mini-md) .main-footer{margin-left: 290px;}
+}
