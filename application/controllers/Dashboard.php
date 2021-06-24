@@ -44,14 +44,19 @@ class Dashboard extends CI_controller{
 	public function instituteLeaderboard(){
 
 		$user=$this->session->userdata('user');
-		
+		$this->load->model('Dashboard_Model');
+		$x=$this->Dashboard_Model->leadershipboardData();
+
+
 		$data=array();
 		$data['user']=$user;
+		$data['tbl_students']=$x;
+
 		if(!empty($user)){
 
 			$this->load->view('dashboard/header',$data);
 			$this->load->view('dashboard/sidebar');
-			$this->load->view('dashboard/leaderboard');
+			$this->load->view('dashboard/leaderboard',$data);
 			$this->load->view('dashboard/footer');
 
 		}else{
@@ -66,7 +71,6 @@ class Dashboard extends CI_controller{
 		$user=$this->session->userdata('user');
 		$this->load->model('Dashboard_Model');
 		$x=$this->Dashboard_Model->instituteBatchCount();
-
 
 		$data=array();
 		$data['user']=$user;
@@ -211,6 +215,57 @@ class Dashboard extends CI_controller{
 			$output.="</tbody>";
 		}else{
 			$output.= "<tr><td colspan='5' align='center'><strong>No Data Available</strong></td></tr>";
+		}
+
+		echo $output;
+	}
+
+
+	public function getDataFilter_leaderboard(){
+		$this->load->model('Dashboard_Model');
+		$postData = $this->input->post();
+
+
+		if($postData["batch_id"]!=0 && $postData["centre_id"] !=0){
+
+			$arr=$this->Dashboard_Model->batch_and_centre_filter_leaderboard($postData["batch_id"],$postData["centre_id"]);
+			
+		}else if($postData["batch_id"]!=0){
+			$arr=$this->Dashboard_Model->batch_filter_leaderboard($postData["batch_id"]);
+
+		}else if($postData["centre_id"]!=0){
+			$arr=$this->Dashboard_Model->centre_filter_leaderboard($postData["centre_id"]);
+
+		}
+
+		$output="";
+		$output.="<thead><tr><th>S.No</th><th>Student Name</th><th>M1 Theory</th><th>M1 Practical</th><th>M2 Theory</th><th>M2 Practical</th><th>M3 Theory</th><th>M3 Practical</th><th>M4 Theory</th><th>M4 Practical</th><th>M5 Theory</th><th>M5 Practical</th><th>EM1 Theory</th><th>EM1 Practical</th><th>EM2 Theory</th><th>EM2 Practical</th><th>Employbility Skills</th><th>Total</th></tr></thead><tbody>";
+		$count=1;
+		if(!empty($arr)){
+			foreach($arr as $s){
+				$output.= "<tr><td>".$count."</td>";
+				$output.= "<td>".$s['name']."</td>";
+				$output.= "<td>".$s['m1t']."</td>";
+				$output.= "<td>".$s['m1p']."</td>";
+				$output.= "<td>".$s['m2t']."</td>";
+				$output.= "<td>".$s['m2p']."</td>";
+				$output.= "<td>".$s['m3t']."</td>";
+				$output.= "<td>".$s['m3p']."</td>";
+				$output.= "<td>".$s['m4t']."</td>";
+				$output.= "<td>".$s['m4p']."</td>";				
+				$output.= "<td>".$s['m5t']."</td>";
+				$output.= "<td>".$s['m5p']."</td>";					
+				$output.= "<td>".$s['em1t']."</td>";
+				$output.= "<td>".$s['em1p']."</td>";				
+				$output.= "<td>".$s['em2t']."</td>";
+				$output.= "<td>".$s['em2p']."</td>";
+				$output.= "<td>".$s['es']."</td>";		
+				$output.= "<td>".$s['total']."</td></tr>";
+				++$count;
+			}
+			$output.="</tbody>";
+		}else{
+			$output.= "<tr><td colspan='18' align='center'><strong>No Data Available</strong></td></tr>";
 		}
 
 		echo $output;

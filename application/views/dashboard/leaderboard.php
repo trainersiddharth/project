@@ -43,7 +43,7 @@
                       
                       <label class="col-sm-1 col-form-label">Batch:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select id="batchfilter3" class="form-control">
                         <option>Select</option>    
                         <option>Batch 1</option>
                         <option>Batch 2</option>
@@ -53,7 +53,7 @@
                       
                     <label class="col-sm-1 col-form-label">NSTI:</label>
                     <div class="col-sm-4">
-                        <select  class="form-control">
+                        <select id="centrefilter3"  class="form-control">
                         <option>Select</option>    
                         <option>NSTI Noida</option>
                         <option>NSTI Dehradun</option>
@@ -73,7 +73,7 @@
  <div class="row"><div class="col-lg-12">
      <div style="overflow-x: scroll; padding-bottom: 30px;">
      
-<table width="100%" border="1" cellspacing="0" cellpadding="5" class="tablelist" style="border-collapse: collapse;"  id="MyTable">
+<table id="tbl_for_leaderboard" width="100%" border="1" cellspacing="0" cellpadding="5" class="tablelist" style="border-collapse: collapse;">
     <thead>
    <tr>
     <th width="5%">S.No </th>
@@ -93,73 +93,38 @@
     <th width="10%">EM2 Theory</th>
     <th width="10%">EM2 Practical  </th>
     <th width="10%">Employability Skills</th>
-    <th width="10%">Total</th>      
+    <!--<th width="10%">Total</th>   -->   
   </tr>
     </thead>
+        <?php $count=1?>
         <tbody>
+        <?php foreach($tbl_students as $student){?>
   <tr>
-    <td>1.</td>
-    <td>Harendra</td>
-    <td>46</td>
-    <td>34</td>
-    <td>42</td>
-    <td>24</td>
-    <td>35</td>
-    <td>15</td>
-     <td>32</td>
-    <td>41</td>
-    <td>17</td>
-    <td>29</td>
-    <td>34</td>
-    <td>34</td>
-    <td>47</td>
-    <td>46</td>
-    <td>35</td>
-    <td>742</td>   
+    <td><?php echo $count;?></td>
+    <td><?php echo $student['name'];?></td>
+    <td><?php echo $student['m1t'];?></td>
+    <td><?php echo $student['m1p'];?></td>
+    <td><?php echo $student['m2t'];?></td>
+    <td><?php echo $student['m2p'];?></td>
+    <td><?php echo $student['m3t'];?></td>
+    <td><?php echo $student['m3p'];?></td>
+    <td><?php echo $student['m4t'];?></td>
+    <td><?php echo $student['m4p'];?></td>
+    <td><?php echo $student['m5t'];?></td>
+    <td><?php echo $student['m5p'];?></td>
+    <td><?php echo $student['em1t'];?></td>
+    <td><?php echo $student['em1p'];?></td>
+    <td><?php echo $student['em2t'];?></td>
+    <td><?php echo $student['em2p'];?></td> 
+    <td><?php echo $student['es'];?></td>
+    <!--<td><?php //echo $student['total'];?></td> -->     
+
   </tr>
-    
-  <tr>
-    <td>2.</td>
-    <td>Kavita Sharma</td>
-    <td>36</td>
-    <td>38</td>
-    <td>48</td>
-    <td>36</td>
-    <td>41</td>
-    <td>35</td>
-     <td>35</td>
-    <td>39</td>
-    <td>29</td>
-    <td>39</td>
-    <td>32</td>
-    <td>25</td>
-    <td>22</td>
-    <td>19</td>
-    <td>25</td>
-    <td>684</td>   
-  </tr>
-    
-  <tr>
-    <td>2.</td>
-    <td>Rahul</td>
-    <td>26</td>
-    <td>31</td>
-    <td>42</td>
-    <td>26</td>
-    <td>47</td>
-    <td>25</td>
-     <td>27</td>
-    <td>35</td>
-    <td>25</td>
-    <td>25</td>
-    <td>42</td>
-    <td>32</td>
-    <td>37</td>
-    <td>23</td>
-    <td>14</td>
-    <td>563</td>   
-  </tr>
+    <?php 
+        $count++;
+      }?>
     </tbody>
+
 </table>
    </div>                  
                       </div></div>

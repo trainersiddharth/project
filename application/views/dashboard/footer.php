@@ -35,6 +35,7 @@ function load_Cen()
     {
       $('#centrefilter1').html(data);
       $('#centrefilter2').html(data);
+      $('#centrefilter3').html(data);
     }
   })
 }
@@ -49,6 +50,7 @@ function load_Bat()
     {
       $('#batchfilter1').html(data);
       $('#batchfilter2').html(data);
+      $('#batchfilter3').html(data);
     }
   })
 }
@@ -148,6 +150,54 @@ $(document).ready(function(){
 
       });
 
+
+      // 3rd 
+
+      $('#centrefilter3').change(function(){
+
+      x=$('#batchfilter3').val();
+      y=$('#centrefilter3').val();
+
+      $.ajax({
+        url:"<?php echo base_url('Dashboard/getDataFilter_leaderboard'); ?>",
+        method:"POST",
+        data:{
+          batch_id:x,
+          centre_id:y
+        },
+        success:function(data)
+        {
+          $('#tbl_for_leaderboard').html(data);
+        }
+      })
+
+      });
+
+
+      $('#batchfilter3').change(function(){
+
+      x=$('#batchfilter3').val();
+      y=$('#centrefilter3').val();
+
+
+      $.ajax({
+      url:"<?php echo base_url('Dashboard/getDataFilter_leaderboard'); ?>",
+      method:"POST",
+      data:{
+        batch_id:x,
+        centre_id:y
+      },
+      success:function(data)
+      {
+        $('#tbl_for_leaderboard').html(data);
+      }
+      })
+
+      });
+
+
+
+
 });
 
 </script>
@@ -166,39 +216,107 @@ $(document).ready(function(){
 <script src="<?php echo base_url();?>dist/js/demo.js"></script>
 <script src="<?php echo base_url();?>dist/js/pages/dashboard3.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
 <script>
-    $(document).ready(function() {
-        $('#MyTable').DataTable({
-            responsive: true
-        });
-    });
-    $(document).ready(function() {
-        $('#MyTable2').DataTable({
-            responsive: true
-        });
-    });
+   $(document).ready(function() {
+    var t = $('#tbl_for_leaderboard').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "pageLength": 25,
+        responsive: true,
 
-    $(document).ready(function() {
-        $('#tbl_for_student').DataTable({
-            responsive: true
-        });
-    });
+        "order": [[ 1, 'asc' ]]
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+} );
 
-    $(document).ready(function() {
-        $('#tbl_for_centre').DataTable({
-            responsive: true
-        });
-    });
-</script> 
+
+$(document).ready(function() {
+    var t = $('#MyTable2').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "pageLength": 25,
+            responsive: true,
+
+        "order": [[ 1, 'asc' ]]
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+} );
+
+
+$(document).ready(function() {
+    var t = $('#tbl_for_centre').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "pageLength": 25,
+        responsive: true,
+        "order": [[ 1, 'asc' ]]
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+} );
+
+$(document).ready(function() {
+    var t = $('#tbl_for_student').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "pageLength": 25,
+            responsive: true,
+        "order": [[ 1, 'asc' ]]
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+} );
+
+</script>
+
+
 <script>
 jQuery(document).ready(function($){
   // Get current path and find target link
-  var path = window.location.pathname.split("/").pop();
+
+  var path=<?php echo base_url('Dashboard'); ?> ;
+
+  alert(path)
+
+  path += '/'+ window.location.pathname.split("/").pop();
   
   // Account for home page with empty path
   if ( path == '' ) {
-    path = 'index.php';
+    path = 'index';
   }
+
+  alert(path)
       
   var target = $('nav a[href="'+path+'"]');
   // Add active class to target link

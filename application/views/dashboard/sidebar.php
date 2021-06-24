@@ -42,7 +42,12 @@
               <p>SkillsBuild Performance </p>
             </a>
           </li>  
-            
+            <li class="nav-item">
+            <a id="sidebar_skills" href="<?php echo base_url('Blog_Controller/viewmainblog')?>" class="nav-link" onclick="loadCen()">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+              <p>Program Updates </p>
+            </a>
+          </li>   
             
                                                              
         </ul>
