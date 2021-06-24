@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Upload Student Details</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
              
@@ -70,6 +70,10 @@
                  
 
                 <input class="btn btn-primary nextBtn pull-right" type="submit" value="Upload" name="submit"/>
+
+                                <br>
+
+                <a href="<?php echo base_url();?>formats/students-format.csv">Download Sample Format</a>
             </div>
         
     </form>

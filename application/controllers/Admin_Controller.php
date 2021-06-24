@@ -15,12 +15,21 @@ class Admin_Controller extends CI_controller{
 		$batches=$this->Admin_Model->countBatch();
 		$students=$this->Admin_Model->countStudent();
 
+		$postData = $this->input->post();
+
+		if(!empty($postData)){			
+			$map1=$this->Admin_Model->batch_filter_centre($postData["batch_id"]);	
+		}else{
+			$map1=$this->Admin_Model->batch_filter_centre(3);
+		}
+
 		$data=array();
 		$data['user']=$user;
 		$data['dashboard_centres']=$centres;
 		$data['dashboard_trainers']=$trainer;
 		$data['dashboard_batch']=$batches;
 		$data['dashboard_student']=$students;
+		$data['map1_dashboard']=$map1;
 
 		if(!empty($user)){
 
@@ -54,6 +63,28 @@ class Admin_Controller extends CI_controller{
 			echo "No Data is available...<br/>";
 		}	
 	}
+
+
+	public function updateMarks(){
+
+		$user=$this->session->userdata('user');
+
+		$data=array();
+		$data['user']=$user;
+
+		if(!empty($user)){
+
+			$this->load->view('admin/header',$data);
+			$this->load->view('admin/sidebar');
+			$this->load->view('admin/update-marks');
+			$this->load->view('admin/footer');
+
+
+		}else{
+			echo "No Data is available...<br/>";
+		}	
+	}
+
 
 
 	public function addStudent(){
@@ -160,8 +191,43 @@ class Admin_Controller extends CI_controller{
 		}
 		$this->Admin_Model->insertStudent($data);
 
-		$this->session->set_flashdata('success','Centes Uploaded Successfully');
+		$this->session->set_flashdata('success','Student Uploaded Successfully');
 		redirect(base_url('Admin_Controller/addStudent'));	
+	}
+
+
+		public function importMarks(){
+
+		$this->load->model('Admin_Model');
+		$this->load->library('csvimport');
+
+		$file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+		foreach($file_data as $row)
+		{
+			$data = array(
+        		'm1t' =>	$row["M1T"],
+        		'm1p' =>	$row["M1P"],
+        		'm2t' =>	$row["M2T"],
+        		'm2p' =>	$row["M2P"],
+        		'm3t' =>	$row["M3T"],
+        		'm3p' =>	$row["M3P"],
+        		'm4t' =>	$row["M4T"],
+        		'm4p' =>	$row["M4P"],
+        		'm5t' =>	$row["M5T"],
+        		'm5p' =>	$row["M5P"],        		        
+         		'em1t' =>	$row["EM1T"],
+        		'em1p' =>	$row["EM1P"],
+        		'em2t' =>	$row["EM2T"],
+        		'em2p' =>	$row["EM2P"],
+        		'es' =>	$row["ES"]       				        	
+			);
+
+			$this->Admin_Model->updateMarks($row["Email"],$data);
+		}
+		
+
+		$this->session->set_flashdata('success','Marks Updated Successfully');
+		redirect(base_url('Admin_Controller/updateMarks'));	
 	}
 
 
@@ -228,6 +294,90 @@ class Admin_Controller extends CI_controller{
 			show_error($this->email->print_debugger());
 		}
 	}
+
+	public function downloadData(){
+
+		$user=$this->session->userdata('user');
+
+		$data=array();
+		$data['user']=$user;
+
+		if(!empty($user)){
+
+			$this->load->view('admin/header',$data);
+			$this->load->view('admin/sidebar');
+			$this->load->view('admin/download-student');
+			$this->load->view('admin/footer');
+
+
+		}else{
+			echo "No Data is available...<br/>";
+		}	
+	}
+
+	// download code csv
+
+	public function exportData() {
+		$this->load->model('Admin_Model');
+		// Load database and query
+		$this->load->database();
+		$b=$this->input->post('batch');
+		$query = $this->Admin_Model->batch_filter_student($b);
+		// Load database utility class
+		$this->load->dbutil();
+		// Create CSV output
+		$data = $this->dbutil->csv_from_result($query);
+	
+		// Load download helper
+		$this->load->helper('download');
+		// Stream download
+		force_download('students_batch_'.$b.'.csv', $data);
+
+		redirect(base_url('Admin_Controller/downloadData'));
+	}
+
+
+	public function edx() {
+		$this->load->model('Admin_Model');
+		// Load database and query
+		$this->load->database();
+		$b=$this->input->post('batch');
+
+		//echo $b;
+		
+		$query = $this->Admin_Model->batch_filter_student($b);
+		// Load database utility class
+
+		
+		$this->load->dbutil();
+
+		print_r($query);
+
+		$delimiter = ",";
+		$newline = "\r\n";
+		$enclosure = '"';
+		
+		// Create CSV output
+		$data = $this->dbutil->csv_from_result($query,$delimiter, $newline, $enclosure);
+		
+		//echo $data;
+
+		
+		// Load download helper
+		$this->load->helper('download');
+		// Stream download
+		
+		 //header("Content-Description: File Transfer"); 
+     	//header("Content-Disposition: attachment; filename=students_batch.csv");
+     //header("Content-Type: application/csv;");
+
+     force_download('students_batch.csv', $data,false);
+
+		redirect(base_url('Admin_Controller/downloadData'));
+		
+		
+	}
+
 
 }
 

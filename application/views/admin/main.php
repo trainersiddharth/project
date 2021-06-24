@@ -1,3 +1,53 @@
+
+<!--google chart start-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Batch', 'No of Students']
+
+          <?php foreach($map1_dashboard as $m){
+            
+            echo ",['".$m["centre"]."',".$m["students"]."]";
+          }
+            
+          ?>
+          
+          ]);
+
+        var options = {
+          width: '100%',
+        height:300,
+          chart: {
+            title: '.',
+            subtitle: ''
+          },
+          bars: 'vertical', // Required for Material Bar Charts.
+          series: {
+            0: { axis: 'distance' } // Bind series 0 to an axis named 'distance'.
+            //1: { axis: 'brightness' }  Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            x: {
+              distance: {label: 'parsecs'}, // Bottom x-axis.
+              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('batch1-chart'));
+      chart.draw(data, options);
+    };
+    </script>
+
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -23,6 +73,9 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+
+
+
         <div class="row">
             
           <div class="col-lg-12">      
@@ -127,6 +180,17 @@
           
               </div>
         <!-- /.row -->
+
+
+
+        <div class="row">   
+  <div class="col-lg-12">    
+      <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart"></div></div>        
+   </div>
+   </div>
+   </div>
+
+
       </div>
       <!-- /.container-fluid -->
     </div>

@@ -38,11 +38,36 @@
             
            <li class="nav-item">
             <a href="<?php echo base_url('Admin_Controller/addStudent')?>" class="nav-link">
-            <i class="nav-icon fas fa-chart-line"></i>
+            <i class="nav-icon fas fa-upload"></i>
               <p>Upload Student Detail</p>
             </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('Admin_Controller/downloadData')?>" class="nav-link">
+            <i class="nav-icon fas fa-download"></i>
+              <p>Download Student Data</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('Admin_Controller/updateMarks')?>" class="nav-link">
+            <i class="nav-icon fas fa-user-edit"></i>
+              <p>Update Student Marks</p>
+			 </a>
           </li>    
-                                                             
+          <li class="nav-item">
+            <a href="<?php echo base_url('Blog_Controller/createblog')?>" class="nav-link">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+              <p>Create Program Updates</p>
+            </a>
+          </li>        
+		<li class="nav-item">
+            <a href="<?php echo base_url('Blog_Controller/viewblog')?>" class="nav-link">
+            <i class="nav-icon fas fa-calendar-check"></i>
+              <p>View Program Updates</p>
+            </a>
+          </li>      		  
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

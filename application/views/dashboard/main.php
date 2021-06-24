@@ -13,7 +13,9 @@
 
           <?php foreach($dashboard_map1 as $m){
             
-            echo ",['".$m["centre"]."',".$m["students"]."]";
+            $nm=explode(" ",$m["centre"]);
+            echo ",['".$nm[count($nm)-1]."',".$m["students"]."]";
+
           }
             
           ?>
@@ -54,7 +56,8 @@
           ['Batch2', 'No of Students']
           <?php foreach($dashboard_map2 as $m){
             
-            echo ",['".$m["centre"]."',".$m["students"]."]";
+                    $nm=explode(" ",$m["centre"]);
+            echo ",['".$nm[count($nm)-1]."',".$m["students"]."]";
           }
             
           ?>
@@ -98,7 +101,8 @@
 
           <?php foreach($dashboard_map3 as $m){
             
-            echo ",['".$m["centre"]."',".$m["students"]."]";
+            $nm=explode(" ",$m["centre"]);
+            echo ",['".$nm[count($nm)-1]."',".$m["students"]."]";
           }
             
           ?>
@@ -368,17 +372,21 @@
           <!--Graph chart start-->
           
          <div class="row">   
-  <div class="col-lg-4">    
+  <div class="col-lg-6">    
       <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart"></div></div>        
    </div>
              
-  <div class="col-lg-4">    
+  <div class="col-lg-6">    
       <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart2"></div></div>        
    </div>            
- <div class="col-lg-4">    
-      <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart3"></div></div>        
-   </div>                 
+                 
           </div>
+          <br>
+          <div class="row"> 
+          <div class="col-lg-12">    
+            <div style="padding:10px !important; background:#ffffff; box-sizing: border-box;"> <div id="batch1-chart3"></div></div>     </div> 
+          </div>    
+          
       <!--Graph chart end-->  
           <br><br>
           
